@@ -3,23 +3,29 @@ import Home from "~/pages/home";
 //absolute path lazım oldu buraya
 import Explore from "~/pages/explore";
 import Notification from "~/pages/notification";
-import NotFound from "~/pages/not-found";
+import MainLayout from "~/layouts/main";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/explore",
-    element: <Explore />,
-  },
-  {
-    path: "/notification",
-    element: <Notification />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "explore",
+        element: <Explore />,
+      },
+      {
+        path: "notifications",
+        element: <Notification />,
+      },
+    ],
   },
 ]);
 
